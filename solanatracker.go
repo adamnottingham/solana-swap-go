@@ -214,10 +214,10 @@ func (st *SolanaTracker) PerformSwap(swapResponse *SwapResponse, options SwapOpt
 		return "", fmt.Errorf("error deserializing transaction: %w", err)
 	}
 
-	// Get the recent blockhash
-	recentBlockhash, err := client.GetRecentBlockhash(ctx, rpc.CommitmentFinalized)
+	// Get the latest blockhash
+	recentBlockhash, err := client.GetLatestBlockhash(ctx, rpc.CommitmentFinalized)
 	if err != nil {
-		return "", fmt.Errorf("error getting recent blockhash: %w", err)
+		return "", fmt.Errorf("error getting latest blockhash: %w", err)
 	}
 
 	// Set the recent blockhash for the transaction
